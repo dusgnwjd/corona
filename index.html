@@ -75,6 +75,19 @@
         content: '여/93년생/4월4일'
       });
       mLabel.open(map, marker); 
+      
+      // 확진자 3
+      var a = new kakao.maps.LatLng(37.368554348170655, 127.11749800006542)
+      var marker = new kakao.maps.Marker({
+          position: a 
+      }); 
+      marker.setMap(map);
+
+      var mLabel = new kakao.maps.InfoWindow({
+        position: a, 
+        content: '여/93년생/4월4일'
+      });
+      mLabel.open(map, marker); 
    </script>
    
 </body>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>우리동네 확진자 지도</title>
+</head>
+<body>
+   <div id="map" style="width:100%;height:100vh;"></div>
+
+   <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=14e5680a5b25d7c63332407af7115db3&libraries=services,clusterer,drawing"></script>
+   <script>
+      var mapContainer = document.getElementById('map'),  
+          mapOption = {
+              center: new kakao.maps.LatLng(37.39420594600511, 127.12675315082822),
+              level: 6,
+              mapTypeId : kakao.maps.MapTypeId.ROADMAP, 
+             draggable : true
+          }; 
+
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+
+      var clickHandler = function(event) {    
+        alert('click: ' + event.latLng.toString());   
+      }; 
+ 
+      kakao.maps.event.addListener(map, 'click', clickHandler);
+
+      var icon = new kakao.maps.MarkerImage(
+        'house.png',
+        new kakao.maps.Size(31, 35),
+        {
+            offset: new kakao.maps.Point(16, 34),
+            alt: "우리집",
+            shape: "poly",
+            coords: "1,20,1,9,5,2,10,0,21,0,27,3,30,9,30,20,17,33,14,33"
+        }
+      );
+
+      var housePosition = new kakao.maps.LatLng(37.39420594600511, 127.12675315082822);
+      var houseMarker = new kakao.maps.Marker({
+          position: housePosition ,
+          image: icon,
+          title: "우리집"
+      });
+      houseMarker.setMap(map);
+
+      var mLabel = new kakao.maps.InfoWindow({
+        position: housePosition, 
+        content: '우리집' 
+      });
+      mLabel.open(map, houseMarker); 
+   
+      // 확진자 1
+      var a = new kakao.maps.LatLng(37.40641917609071, 127.11355871906522)
+      var marker = new kakao.maps.Marker({
+          position: a 
+      }); 
+      marker.setMap(map);
+
+      var mLabel = new kakao.maps.InfoWindow({
+        position: a, 
+        content: '여/97년생/3월28일'
+      });
+      mLabel.open(map, marker); 
+
+      // 확진자 2
+      var a = new kakao.maps.LatLng(37.36771353882561, 127.11112965295376)
+      var marker = new kakao.maps.Marker({
+          position: a 
+      }); 
+      marker.setMap(map);
+
+      var mLabel = new kakao.maps.InfoWindow({
+        position: a, 
+        content: '여/93년생/4월4일'
+      });
+      mLabel.open(map, marker); 
+   </script>
+   
+</body>
+</html>

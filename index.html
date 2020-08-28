@@ -270,6 +270,19 @@
             });
           mLabel.open(map, marker); 
       
+      // 성남시청 홈페이지
+      var a = new kakao.maps.LatLng(37.39013920885878, 127.15231236446145)
+      var marker = new kakao.maps.Marker({
+          position: a 
+      }); 
+      marker.setMap(map);
+
+      var mLabel = new kakao.maps.InfoWindow({
+        position: a, 
+        content: 'https://corona.seongnam.go.kr/'
+            });
+          mLabel.open(map, marker); 
+      
           
    </script>
    

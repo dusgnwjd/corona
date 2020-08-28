@@ -257,6 +257,20 @@
             });
           mLabel.open(map, marker); 
           
+       // 내 정보
+      var a = new kakao.maps.LatLng(37.39446421828735, 127.15223077086942)
+      var marker = new kakao.maps.Marker({
+          position: a 
+      }); 
+      marker.setMap(map);
+
+      var mLabel = new kakao.maps.InfoWindow({
+        position: a, 
+        content: '30219 정연후'
+            });
+          mLabel.open(map, marker); 
+      
+          
    </script>
    
    
